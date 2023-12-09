@@ -1,7 +1,16 @@
+*.pyc
+chat/__pycache__/__init__.cpython-312.pyc
+chat/__pycache__/settings.cpython-312.pyc
+chat/__pycache__/urls.cpython-312.pyc
+chat/__pycache__/views.cpython-312.pyc
+chat/__pycache__/wsgi.cpython-312.pyc
 pyvenv.cfg
 /.vs
 db.sqlite3
-_pycache_
+__pycache__
 /__pycache__
 __pycache__/
 .venv/
+
+chat/__pycache__/
+
