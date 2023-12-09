@@ -29,16 +29,15 @@ class Client:
         self.message = input()
 
     def inputKey(self):
-        print("Введите секретный ключ. Значение должно быть в диапазоне от 0 до {}, так как размер ключа равен {}:".format(
-            2 ** SAES.key_size - 1, SAES.key_size))
-        self.key = int(input())
+        #print("Введите секретный ключ. Значение должно быть в диапазоне от 0 до {}, так как размер ключа равен {}:".format(
+        #    2 ** SAES.key_size - 1, SAES.key_size))
+        self.key = 512
         if (self.key < 0) or (self.key > (2 ** SAES.key_size - 1)):
             print("Follow the rules for the key")
             exit(1)
 
     def inputKeyParameters(self):
-        print("Введите ключевые параметры p, q и e, разделенные пробелом:")
-        self.p, self.q, self.e = map(int, input().split())
+        self.p, self.q, self.e = 50411,46049,65537
 
     def generateClientKeys(self):
         self.private_key, self.public_key = RSA.generateKeys(

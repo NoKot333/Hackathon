@@ -30,7 +30,7 @@ class Server:
 
     def inputKeyParameters(self):
         print("Введите ключевые параметры p, q и e, разделенные пробелом:")
-        self.p, self.q, self.e = map(int, input().split())
+        self.p, self.q, self.e = 50411,46049,65537
 
     def generateServerKeys(self):
         self.private_key, self.public_key = RSA.generateKeys(
