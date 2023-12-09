@@ -7,10 +7,16 @@ class ChatServer:
         self.websocket_clients = set()
 
     async def handle_client(self, websocket, path):
+        self.websocket_clients.add(websocket)  # Добавляем клиент в множество
         await self.send_chat_history(websocket)
-        async for message in websocket:
-            self.chat_history.append(message)
-            await self.broadcast_message(message)
+
+        try:
+            async for message in websocket:
+                self.chat_history.append(message)
+                await self.broadcast_message(message)
+        finally:
+            # При разрыве соединения удаляем клиента из множества
+            self.websocket_clients.remove(websocket)
 
     async def send_chat_history(self, websocket):
         if self.chat_history:
@@ -29,3 +35,4 @@ if __name__ == "__main__":
     start_server = websockets.serve(chat_server.server, "localhost", 5003)
     asyncio.get_event_loop().run_until_complete(start_server)
     asyncio.get_event_loop().run_forever()
+
