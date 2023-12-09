@@ -3,3 +3,5 @@ pyvenv.cfg
 db.sqlite3
 _pycache_
 /__pycache__
+__pycache__/
+.venv/
