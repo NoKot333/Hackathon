@@ -6,14 +6,14 @@
         {% bootstrap_javascript %}
     </head>
     <body>
-        <div class="container-fluid">
+        <div class="container align-self-center h-100 w-100 position-fixed">
           <div class="row align-items-stretch ">
             <div class="col-3 align-items-stretch border p-2">
-              <div class="row text-center">
+              <div class="flex-row text-center">
                 <strong>Chats</strong>
               </div>
               <hr>
-              <a href="#" class="list-group-item list-group-item-action h-sm border-4 border-white">
+              <a href="#" class="list-group-item list-group-item-action h-sm border-4 border-white ">
                 <div class="d-flex w-100 align-items-center justify-content-between">
                   <strong class="mb-1">User1</strong>
                   <small class="text-body-secondary">Date</small>
@@ -35,21 +35,27 @@
                 <div class="col-10 mb-1 small">Test Message</div>
               </a>
             </div>
-            <div class="col-5 border">
-              <div class="align-items-md-center rounded-3 text-center p-5">
+            <div class="col-9 border">
+              <div class="align-self-center text-center p-1 border border-black">
                   $Username
               </div>
               <hr>
-                <div class="rounded-2 bg-white border">
-                  Message!
-                </div>
-                <div class="input-group align-items-end">
-                  <span class="input-group-text">$</span>
-                  <div class="form-floating">
-                    <input type="text" class="form-control" id="floatingInputGroup1" placeholder="msg">
-                    <label for="floatingInputGroup1">Enter message</label>
+              <div class="row list-group list-group-flush border-bottom overflow-auto p-3">
+                  <div class="rounded-2 bg-white border mb-3 p-3">
+                    Message!
                   </div>
-                  <button class="btn btn-outline-primary ">Send</button>
+                  <div class="rounded-2 bg-white border mb-3 p-3">
+                    Message 2!
+                  </div>
+                  <div class="rounded-2 bg-white border mb-3 p-3">
+                    Message 3!
+                  </div>
+                </div>
+                <div class="input-group p-3 align-items-end">
+                  <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                  <div class="input-group-append">
+                    <button class="btn btn-outline-secondary" type="button">Button</button>
+                  </div>
                 </div>
             </div>
           </div>
