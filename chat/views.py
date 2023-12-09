@@ -12,3 +12,8 @@ def home(request):
             request,
             'client/home/index.html'
         )
+def chat(request):
+    return render(
+        request,
+        'client/home/chat.html'
+    )
