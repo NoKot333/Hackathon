@@ -10,6 +10,10 @@ def home(request):
     else:
         return render(
             request,
-
-            'client/home/chat.html'
+            'client/home/index.html'
         )
+def chat(request):
+    return render(
+        request,
+        'client/home/chat.html'
+    )
