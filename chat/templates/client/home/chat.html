@@ -1,10 +1,7 @@
 <!DOCTYPE html>
     <head>
-        <title>{% block title %}{% endblock %}</title>
-        {% load bootstrap5 %}
-        {% bootstrap_css %}
-        {% bootstrap_javascript %}
-    </head>
+        <link rel="stylesheet" href="../../styles/style.css">
+
     <body>
         <div class="container py-1 cyan">
 
@@ -193,10 +190,25 @@
         
               </div>-->
         
-            </div>
- -->       
+            </div>   
           </div>
-        {% block content %}
-        {% endblock %}
+
+    <div>
+        <div class="d-flex flex-column align-items-stretch flex-shrink-0 bg-info" style="width: 300px;">
+            <a href="/" class="d-flex align-items-center flex-shrink-0 p-3 link-dark text-decoration-none border-bottom">
+            <svg class="bi me-2" width="30" height="24"><use xlink:href="#bootstrap"></use></svg>
+            <span class="fs-5 fw-semibold">Список пользователей</span>
+            </a>
+            <div class="list-group list-group-flush border-bottom scrollarea">
+            <a href="#" class="list-group-item list-group-item-action py-3 lh-tight " aria-current="true">
+                <div class="d-flex w-100 align-items-center justify-content-between">
+                <strong class="mb-1">Пользователь 1</strong>
+                <small>30 февраля 1337</small>
+                </div>
+                <div class="col-10 mb-1 small">Здарова, братишка</div>
+            </a>
+            </div>
+        </div>
+    </div>
     </body>
 </html>
