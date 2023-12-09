@@ -4,6 +4,16 @@
         {% load bootstrap5 %}
         {% bootstrap_css %}
         {% bootstrap_javascript %}
+
+        <script>
+          function add_message() {
+            var innerDiv = document.createElement('div');
+            innerDiv.className = "rounded-2 bg-white border mb-3 p-3";
+            innerDiv.innerHTML += document.getElementById("input_message").value;
+            var outerDiv = document.getElementById("Message_block");
+            outerDiv.appendChild(innerDiv);
+          }
+        </script>
     </head>
     <body>
         <div class="container align-self-center position-fixed mw-100 mh-100">
@@ -40,27 +50,18 @@
                   $Username
               </div>
               <hr>
-              <div class="list-group list-group-flush border-bottom overflow-auto p-3 overflow-auto" style="max-width: 853px; max-height: 255px;">
-                  <div class="rounded-2 bg-white border mb-3 p-3">
+              <div id="Message_block" class="list-group list-group-flush border-bottom overflow-auto p-3 overflow-auto" style="max-width: 853px; max-height: 255px;">
+                  
+
+                <div class="rounded-2 bg-white border mb-3 p-3">
                     Message!
-                  </div>
-                  <div class="rounded-2 bg-white border mb-3 p-3">
-                    Message 2!
-                  </div>
-                  <div class="rounded-2 bg-white border mb-3 p-3">
-                    Message 3!
-                  </div>
-                  <div class="rounded-2 bg-white border mb-3 p-3">
-                    Message 3!
-                  </div>
-                  <div class="rounded-2 bg-white border mb-3 p-3">
-                    Message 3!
-                  </div>
+                </div>
+
                 </div>
                 <div class="input-group p-3 align-items-end">
-                  <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                  <input type="text" id="input_message" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2">
                   <div class="input-group-append">
-                    <button class="btn btn-outline-secondary" type="button">Button</button>
+                    <button class="btn btn-outline-secondary" type="button" onclick="add_message()">Button</button>
                   </div>
                 </div>
             </div>

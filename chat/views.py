@@ -5,7 +5,7 @@ def home(request):
     if (request.META['SERVER_PORT']=="9322"):
         return render(
             request,
-            'server/index.html'
+            'server/server.html'
         )
     else:
         return render(
