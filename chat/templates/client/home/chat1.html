@@ -4,49 +4,21 @@
         {% load bootstrap5 %}
         {% bootstrap_css %}
         {% bootstrap_javascript %}
+
         <script>
-          console.log('start script.');
-          const socket = new WebSocket('ws://localhost:5003');
-
-socket.onopen = function(event) {
-    console.log('WebSocket is connected.');
-};
-
-socket.onmessage = function(event) {
-    const message = event.data;
-    if (message.startsWith("CHAT_HISTORY:")) {
-        const history = message.substring(13).split(";");
-        displayChatHistory(history);
-    } else {
-        addMessageToChat(message);
-    }
-};
-
-function displayChatHistory(history) {
-    const outerDiv = document.getElementById("Message_block");
-    outerDiv.innerHTML = "";
-
-    for (let i = 0; i < history.length; i++) {
-        const innerDiv = document.createElement('div');
-        innerDiv.className = "rounded-2 bg-white border mb-3 p-3";
-        innerDiv.textContent = history[i];
-        outerDiv.appendChild(innerDiv);
-    }
-}
-
-function addMessageToChat(message) {
-    const innerDiv = document.createElement('div');
-    innerDiv.className = "rounded-2 bg-white border mb-3 p-3";
-    innerDiv.textContent = message;
-    const outerDiv = document.getElementById("Message_block");
-    outerDiv.appendChild(innerDiv);
-}
+          function add_message() {
+            var innerDiv = document.createElement('div');
+            innerDiv.className = "rounded-2 bg-white border mb-3 p-3";
+            innerDiv.innerHTML += document.getElementById("input_message").value;
+            var outerDiv = document.getElementById("Message_block");
+            outerDiv.appendChild(innerDiv);
+          }
         </script>
     </head>
     <body>
-        <div class="container align-self-center position-fixed mw-100 mh-100">
-          <div class="row align-items-stretch ">
-            <div class="col-3 align-items-stretch border p-2 " style="max-width: 100%;">
+        <div class="container align-self-center position-fixed" style="min-width: 1920px;">
+          <div class="row align-items-stretch">
+            <div class="col-3 align-items-stretch border p-2 ">
               <div class="flex-row text-center">
                 <strong>Chats</strong>
               </div>
@@ -78,16 +50,19 @@ function addMessageToChat(message) {
                   $Username
               </div>
               <hr>
-              <div class="list-group list-group-flush border-bottom overflow-auto p-3 overflow-auto" style="max-width: 853px; max-height: 255px;">
+              <div id="Message_block" class="list-group list-group-flush border-bottom overflow-auto p-3 overflow-auto" style="max-width: 853px; max-height: 255px;">
                   
+
+                <div class="rounded-2 bg-white border mb-3 p-3">
+                    Message!
+                </div>
+
                 </div>
                 <div class="input-group p-3 align-items-end">
-                  <form action="http://localhost:5000/send_message" method="post">
-<input type="text" name="message" class="form-control" placeholder="Type your message here" aria-label="Message">
-<button type="submit" class="btn btn-primary">Send</button>
-</form>
+                  <input type="text" id="input_message" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2">
+
                   <div class="input-group-append">
-                    <button class="btn btn-outline-secondary" type="button">Button</button>
+                    <button class="btn btn-outline-secondary" type="button" onclick="add_message()">Button</button>
                   </div>
                 </div>
             </div>
