@@ -45,8 +45,9 @@ function addMessageToChat(message) {
     outerDiv.appendChild(innerDiv);
 }
 
-function sendMessageToServer(message){
-
+function sendMessageToServer(){
+    message = document.getElementById("input_message").value;
+    socket.send(message);
 }
         </script>
     </head>
@@ -89,12 +90,10 @@ function sendMessageToServer(message){
                   
                 </div>
                 <div class="input-group p-3 align-items-end">
-                  <form action="http://localhost:5000/send_message" method="post">
-<input type="text" name="message" class="form-control" placeholder="Type your message here" aria-label="Message">
-<button type="submit" class="btn btn-primary">Send</button>
-</form>
+                  <input type="text" id="input_message" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2">
+
                   <div class="input-group-append">
-                    <button class="btn btn-outline-secondary" type="button">Button</button>
+                    <button class="btn btn-outline-secondary" type="button" onclick="sendMessageToServer()">Button</button>
                   </div>
                 </div>
             </div>

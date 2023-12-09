@@ -3,7 +3,8 @@ import websockets
 
 class ChatServer:
     def __init__(self):
-        self.chat_history = ["abc"]
+        self.chat_history = []
+        self.websocket_clients = set()
 
     async def handle_client(self, websocket, path):
         await self.send_chat_history(websocket)
