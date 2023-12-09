@@ -1,0 +1,10 @@
+.main-container {
+    height: 100%;
+    width: 100%;
+}
+
+.main-chat-grid {
+    display: grid;
+    grid-template-columns: 30%;
+    grid-template-rows: 100% 100%;
+}
