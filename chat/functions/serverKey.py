@@ -13,7 +13,7 @@ from util.SAES import SAES
 class Server:
 
     def __init__(self):
-        print("[STARTING] Server is starting...")
+        print("[ЗАПУСК] Сервер запускается...")
         self.PORT = 5050
         # Local IP Addess of the host
         self.SERVER_IP = socket.gethostbyname(socket.gethostname())
@@ -22,14 +22,14 @@ class Server:
         self.server_socket.bind(self.ADDR)
 
     def listen(self):
-        print(f'[LISTENING] Server listening on {self.SERVER_IP}...')
+        print(f'[ПРОСЛУШИВАНИЕ] Сервер прослушивает {self.SERVER_IP}...')
         self.server_socket.listen()
         self.conn, self.addr = self.server_socket.accept()
 
         return self.conn, self.addr
 
     def inputKeyParameters(self):
-        print("Enter the space seperated key parameters p, q and e:")
+        print("Введите ключевые параметры p, q и e, разделенные пробелом:")
         self.p, self.q, self.e = map(int, input().split())
 
     def generateServerKeys(self):
@@ -58,7 +58,7 @@ class Server:
         # Decrypt secret key using server's private key
         decrypted_secret_key = int(RSA.decrypt(
             self.private_key, encrypted_secret_key))
-        print("\nDecrypted secret key:", decrypted_secret_key)
+        print("\nРасшифрованный секретный ключ:", decrypted_secret_key)
         print("\n[Server] Decrypting client's message...")
         subkeys = SAES.generate_subkeys(decrypted_secret_key)
 
@@ -67,26 +67,26 @@ class Server:
         subkeys[1], subkeys[5] = subkeys[5], subkeys[1]
 
         plaintext = SAES.decrypt(ciphertext, subkeys)
-        print("Decrypted plaintext:", plaintext)
+        print("Расшифрованный открытый текст:", plaintext)
 
         if SAES.is_padded:
             plaintext = plaintext[:-1]
 
         # Generating digest
         hash_code = HashAlgo.generateHashCode(message=plaintext)
-        print(f"\nMessage digest: {hash_code}")
+        print(f"\nпрофиль сообщения {hash_code}")
 
         # Verifying client signature
         is_verified = RSA.verify(
             client_public_key, hash_code=hash_code, client_sign=client_signature)
-        print("Signature verified:", is_verified)
+        print("Подпись подтверждена:", is_verified)
 
         self.server_socket.close()
 
 
 server_obj = Server()
 conn, add = server_obj.listen()
-print("[Connected] Connection created with IP: {} on PORT: {}".format(add[0], add[1]))
+print("[Подключено] Соединение создано с IP: {} на ПОРТУ: {}".format(add[0], add[1]))
 print("\n--------------Code by ЧОКОПАЙ (09.12.2023)--------------\n")
 
 server_obj.inputKeyParameters()
@@ -105,7 +105,7 @@ if msg == 'Y':
 
     # Sending public key on client's request
     server_obj.sendMsg(server_obj.public_key)
-    print(f'[Sending] Public key to {server_obj.ADDR} (Client)...')
+    print(f'[Отправка] открытого ключа в {server_obj.ADDR} (Client)...')
 
     ############################################################################
 
@@ -113,5 +113,5 @@ if msg == 'Y':
     server_obj.workFlow()
 
 else:
-    print("[Sever] Closing the connection...")
+    print("[Сервер] Закрывает соединение...")
     server_obj.server_socket.close()
