@@ -13,6 +13,7 @@ socket.onopen = function(event) {
 };
 
 socket.onmessage = function(event) {
+    console.log('OnMessage.');
     const message = event.data;
     if (message.startsWith("CHAT_HISTORY:")) {
         const history = message.substring(13).split(";");
@@ -23,6 +24,7 @@ socket.onmessage = function(event) {
 };
 
 function displayChatHistory(history) {
+    console.log('displayChatHistory.');
     const outerDiv = document.getElementById("Message_block");
     outerDiv.innerHTML = "";
 
@@ -35,11 +37,16 @@ function displayChatHistory(history) {
 }
 
 function addMessageToChat(message) {
+    console.log('addMessageToChat.');
     const innerDiv = document.createElement('div');
     innerDiv.className = "rounded-2 bg-white border mb-3 p-3";
     innerDiv.textContent = message;
     const outerDiv = document.getElementById("Message_block");
     outerDiv.appendChild(innerDiv);
+}
+
+function sendMessageToServer(message){
+
 }
         </script>
     </head>
@@ -78,7 +85,7 @@ function addMessageToChat(message) {
                   $Username
               </div>
               <hr>
-              <div class="list-group list-group-flush border-bottom overflow-auto p-3 overflow-auto" style="max-width: 853px; max-height: 255px;">
+              <div class="list-group list-group-flush border-bottom overflow-auto p-3 overflow-auto" style="max-width: 853px; max-height: 255px;" id="Message_block">
                   
                 </div>
                 <div class="input-group p-3 align-items-end">

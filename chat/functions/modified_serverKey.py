@@ -3,7 +3,7 @@ import websockets
 
 class ChatServer:
     def __init__(self):
-        self.chat_history = []
+        self.chat_history = ["abc"]
 
     async def handle_client(self, websocket, path):
         await self.send_chat_history(websocket)
@@ -26,6 +26,5 @@ class ChatServer:
 if __name__ == "__main__":
     chat_server = ChatServer()
     start_server = websockets.serve(chat_server.server, "localhost", 5003)
-    chat_server.send_chat_history
     asyncio.get_event_loop().run_until_complete(start_server)
     asyncio.get_event_loop().run_forever()
