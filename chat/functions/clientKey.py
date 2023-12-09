@@ -1,5 +1,4 @@
 # client.py
-# By Gargi Chaurasia 2019059
 import socket
 import sys
 import pickle
