@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Подключение к серверу</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        #logo {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            width: 150px;
+            height: 95px;
+            background: url('Рисунок1.png') no-repeat center center;
+            background-size: cover;
+            z-index: 999; 
+        }
+        #connection-form {
+            max-width: 400px;
+            width: 100%;
+            padding: 20px;
+            box-sizing: border-box;
+            border-radius: 8px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            position: relative;
+            z-index: 1;
+        }
+        h2 {
+            text-align: center;
+            color: black;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 14px;
+            color: #333;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        small {
+            display: block;
+            margin-top: 5px;
+            margin-bottom: 10px;
+            font-size: 12px;
+            color: #777;
+        }
+        button {
+            background-color: rgb(12, 155, 160);
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div id="logo"></div>
+    <div id="connection-form">
+        <h2>Подключение к серверу</h2>
+        <label for="ip-address">IP сервера:</label>
+        <input type="text" id="ip-address" name="ip-address" placeholder="Введите IP сервера" required>
+
+        <label for="username">Имя пользователя (5-15 символов):</label>
+        <input type="text" id="username" name="username" pattern="[a-zA-Zа-яА-Я0-9]{5,15}" placeholder="Введите имя пользователя" required>
+        <small>Имя пользователя должно состоять из 5-15 латинских, русских символов или цифр.</small>
+
+        <button type="button" onclick="connectToServer()">Подключиться</button>
+    </div>
+
+    <script>
+        function connectToServer() {
+            var ipAddress = document.getElementById('ip-address').value;
+            var username = document.getElementById('username').value;
+
+            console.log("IP сервера: " + ipAddress);
+            console.log("Имя пользователя: " + username);
+        }
+    </script>
+</body>
+</html>
