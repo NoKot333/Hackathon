@@ -17,3 +17,8 @@ def chat(request):
         request,
         'client/home/chat.html'
     )
+def login(request):
+    return render(
+        request,
+        'client/home/login.html'
+    )
